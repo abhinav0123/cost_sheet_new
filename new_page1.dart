@@ -31,6 +31,7 @@ void main() async {
 }
 
 class newapp extends StatelessWidget {
+  const newapp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +39,12 @@ class newapp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      initialRoute: MyApp1.id,
+      // routes: {
+      //   TextFormFieldWidgetTest.id: (context) => TextFormFieldWidgetTest(),
+      // },
       routes: {
+        MyApp1.id: (context) => MyApp1(),
     // '/': (context) =>  MyApp1(),
     // When navigating to the "/second" route, build the SecondScreen widget.
     '/putv': (context) =>  Appone(),
@@ -46,11 +52,14 @@ class newapp extends StatelessWidget {
 
       },
     );
+
   }
 }
 
 class MyApp1 extends StatefulWidget {
   const MyApp1({Key? key}) : super(key: key);
+
+  static final String id = "text_form_field";
 
 
   @override
@@ -58,21 +67,22 @@ class MyApp1 extends StatefulWidget {
 }
 
 class _MyApp1State extends State<MyApp1> {
+  final _formKey = GlobalKey<FormState>();
 
   TextEditingController? textController1;
-  // TextEditingController? textController2;
-  // TextEditingController? textController3;
-  // TextEditingController? textController4;
-  // TextEditingController? textController5;
-  // TextEditingController? textController6;
-  // TextEditingController? textController7;
-  // TextEditingController? textController8;
-  // TextEditingController? textController9;
-  // TextEditingController? textController10;
-  // TextEditingController? textController11;
-  // TextEditingController? textController12;
-  // TextEditingController? textController13;
-  // TextEditingController? textController14;
+  TextEditingController? textController2;
+  TextEditingController? textController3;
+  TextEditingController? textController4;
+  TextEditingController? textController5;
+  TextEditingController? textController6;
+  TextEditingController? textController7;
+  TextEditingController? textController8;
+  TextEditingController? textController9;
+  TextEditingController? textController10;
+  TextEditingController? textController11;
+  TextEditingController? textController12;
+  TextEditingController? textController13;
+  TextEditingController? textController14;
   CollectionReference users =
   FirebaseFirestore.instance.collection('CostSheet');
 
@@ -82,21 +92,24 @@ class _MyApp1State extends State<MyApp1> {
   void initState() {
     super.initState();
     textController1 = TextEditingController();
-    // textController2 = TextEditingController();
-    // textController3 = TextEditingController();
-    // textController4 = TextEditingController();
-    // textController5= TextEditingController();
-    // textController6= TextEditingController();
-    // textController7= TextEditingController();
-    // textController8= TextEditingController();
-    // textController9= TextEditingController();
-    // textController10= TextEditingController();
-    // textController11= TextEditingController();
-    // textController12= TextEditingController();
-    // textController13= TextEditingController();
-    // textController14= TextEditingController();
+    textController2 = TextEditingController();
+    textController3 = TextEditingController();
+    textController4 = TextEditingController();
+    textController5= TextEditingController();
+    textController6= TextEditingController();
+    textController7= TextEditingController();
+    textController8= TextEditingController();
+    textController9= TextEditingController();
+    textController10= TextEditingController();
+    textController11= TextEditingController();
+    textController12= TextEditingController();
+    textController13= TextEditingController();
+    textController14= TextEditingController();
 
   }
+  String? firstName;
+  String? secondName;
+
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +126,7 @@ class _MyApp1State extends State<MyApp1> {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
+                  key: _formKey,
                   child: Text(
                     'Enter  The Freight Rates For Mathura ',
                     style: TextStyle(
@@ -143,6 +157,12 @@ class _MyApp1State extends State<MyApp1> {
                         height: 40,
                         child: TextFormField(
                           controller: textController1,
+                          keyboardType: TextInputType.name,
+                          // autofillHints: [AutofillHints.givenName],
+                          onSaved: (value) {
+                            textController1?.text = value!;
+                          },
+                          textInputAction: TextInputAction.done,
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -181,7 +201,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController2,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -220,7 +242,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController3,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -259,7 +283,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController4,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -298,7 +324,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController5,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -337,7 +365,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController6,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -376,7 +406,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController7,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -415,7 +447,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController8,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -454,7 +488,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController9,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -493,7 +529,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController10,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -532,7 +570,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController11,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -571,7 +611,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController12,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -610,7 +652,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController13,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -649,7 +693,9 @@ class _MyApp1State extends State<MyApp1> {
                         width: 80,
                         height: 40,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: textController14,
+                          keyboardType: TextInputType.number,
+                          autofillHints: [AutofillHints.givenName],
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
                           autofocus: true,
@@ -672,6 +718,7 @@ class _MyApp1State extends State<MyApp1> {
 
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(250, 50, 20, 0),
+
                   child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -696,8 +743,20 @@ class _MyApp1State extends State<MyApp1> {
                       //     .catchError((error) => {
                       //   print(error),
                       // });
-                      frieghtM = double.parse(textController1!.text);
-                      print("freight value is $frieghtM");
+                      frieghtUP = double.parse(textController1!.text);
+                      frieghtMP = double.parse(textController2!.text);
+                      frieghtRAJ = double.parse(textController3!.text);
+                      frieghtHAR = double.parse(textController4!.text);
+                      frieghtPUN = double.parse(textController5!.text);
+                      frieghtORR = double.parse(textController6!.text);
+                      frieghtJHA = double.parse(textController7!.text);
+                      frieghtCHH = double.parse(textController8!.text);
+                      frieghtWB = double.parse(textController9!.text);
+                      frieghtAS = double.parse(textController10!.text);
+                      frieghtUK = double.parse(textController11!.text);
+                      frieghtDEL = double.parse(textController12!.text);
+                      frieghtHIM= double.parse(textController13!.text);
+                      frieghtJK = double.parse(textController14!.text);
 
                       Navigator.of(context).pushNamed('/putv');
                     },
@@ -709,7 +768,28 @@ class _MyApp1State extends State<MyApp1> {
                     icon: Icon(Icons.arrow_forward),
                   ),
                 ),
+                Padding(padding:  EdgeInsetsDirectional.fromSTEB(200, 20, 40, 40),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green, // background
+                    onPrimary: Colors.white, // foreground
+                  ),
+                  onPressed: () {
+                    // print("The data is saved");
+                    setState(() {
+                 firstName = textController1?.text;
+                 secondName=textController2?.text;
+
+                  print(firstName);
+                  });
+                  },
+                  child: Text('Save & Update'),
+                ),
+
+                ),
+                firstName == null ? Text("") : Text(firstName!),
               ],
+
             ),
           ),
         ),
